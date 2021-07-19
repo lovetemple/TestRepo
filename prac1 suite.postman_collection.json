@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "a5b2129a-35d8-48d4-a330-c864d1f7514f",
+		"name": "prac1 suite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "no array",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* check ",
+							"",
+							"Tiltle",
+							"Author",
+							"Price  properties exist",
+							"",
+							"check title should be a string ",
+							"price should be a number",
+							"price should be less than hundred and gr than 1",
+							"",
+							"*/",
+							"pm.test(\"checked key exist\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    // checking for keys title author and price",
+							"    pm.expect(jsonData.Book).to.haveOwnProperty(\"Title\");",
+							"    pm.expect(jsonData.Book).to.haveOwnProperty(\"Author\");",
+							"    pm.expect(jsonData.Book).to.haveOwnProperty(\"Price\");",
+							"    //pm.expect(jsonData.value).to.eql(100);",
+							"});",
+							"pm.test(\"checked key exist\", function () {",
+							"    var jsonData = pm.response.json();",
+							"pm.expect(jsonData.Book.Title).to.be.a(\"string\")",
+							"pm.expect(jsonData.Book.Price).to.be.a('number');",
+							"pm.expect(jsonData.Book.Price).to.be.lessThan(100);",
+							"pm.expect(jsonData.Book.Price).to.be.gte(1);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://d95a1ae9-5094-4ad7-9010-5e1baa1d07e0.mock.pstmn.io/book",
+					"protocol": "https",
+					"host": [
+						"d95a1ae9-5094-4ad7-9010-5e1baa1d07e0",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "array check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* ",
+							"check array lenth should be gre2",
+							"check raghus price should be >1",
+							"check snehas promotion should be =50",
+							"*/",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"   // pm.expect(jsonData.value).to.eql(100);",
+							"pm.expect(jsonData.Books.length).to.be.greaterThan(2);",
+							"//pm.expect(jsonData.Books[1].Price).to.be.greaterThan(1);",
+							"",
+							"var index;",
+							"",
+							"for(index=0; index<jsonData.Books.length; index++){",
+							"    ",
+							"    //console.log(index + '   ' + jsonData.Books[index].Author);",
+							"    if( jsonData.Books[index].Author==\"Sneha\"){",
+							"        break;",
+							"    }",
+							"}",
+							"",
+							"pm.expect(jsonData.Books[index].Price.discountPrice).to.be.equal(50);",
+							"//console.log(jsonData.Books.length);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"var schema = {",
+							"    \"items\": {",
+							"        \"type\": \"boolean\"",
+							"    }",
+							"};",
+							"",
+							"//var data1 = [true, false,true,false];",
+							"var data2 = [true, true];",
+							"",
+							"pm.test('Schema is valid', function () {",
+							"   // pm.expect(tv4.validate(data1, schema)).to.be.true;",
+							"    pm.expect(tv4.validate(data2, schema)).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6973ef3d-bab6-4c25-98fd-73dc240b8bc9.mock.pstmn.io/books",
+					"protocol": "https",
+					"host": [
+						"6973ef3d-bab6-4c25-98fd-73dc240b8bc9",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* ",
+							"check array lenth should be gre2",
+							"check raghus price should be >1",
+							"check snehas promotion should be =50",
+							"*/",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    //pm.expect(jsonData.value).to.eql(100);",
+							"    pm.expect(jsonData.Books[0].Title).to.be.equal('Billy A1');",
+							"   // pm.expect(jsonData.Books[4].Price).to.be.greaterThan(1);",
+							"    pm.expect(jsonData.Books[0].Price.discountPrice).to.be.equal(50);",
+							"    pm.expect(jsonData.Books.length).to.be.greaterThan(2);",
+							"",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6973ef3d-bab6-4c25-98fd-73dc240b8bc9.mock.pstmn.io/books",
+					"protocol": "https",
+					"host": [
+						"6973ef3d-bab6-4c25-98fd-73dc240b8bc9",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "array with for loop",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* ",
+							"we need to find the index of node that your after we use for loop to looop through all the chikld nodes and break loop when we find the actual child node/object.",
+							"",
+							"*/",
+							"",
+							"",
+							"",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var i = 0;",
+							"",
+							"    for(i=0;i<jsonData.Books.length;i++){",
+							"   ",
+							"         if('Radadfaghu'==jsonData.Books[i].Author){",
+							"             console.log('found index '+ i + ' is '+ jsonData.Books[i].Price);",
+							"             break;",
+							"        }",
+							"    ",
+							"    }",
+							"    pm.expect(jsonData.Books[i].Price).to.be.greaterThan(0);",
+							"",
+							" //pm.expect(jsonData.value).to.eql(100);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6973ef3d-bab6-4c25-98fd-73dc240b8bc9.mock.pstmn.io/books",
+					"protocol": "https",
+					"host": [
+						"6973ef3d-bab6-4c25-98fd-73dc240b8bc9",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loop last name price",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var i;",
+							"    for(i=0;i<jsonData.Books.length;i++){",
+							"",
+							"        if(jsonData.Books[i].Author.has('pot1')){",
+							"            break;",
+							"        }",
+							"    }",
+							"    pm.expect(jsonData.Books[i].Price).to.be.equal(10);",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test('Schema is valid', function () {",
+							"    var jsonData = pm.response.json();",
+							"    ",
+							"",
+							"var schema ={",
+							"    \"$schema\": \"http://json-schema.org/draft-06/schema#\",",
+							"    \"$ref\": \"#/definitions/Welcome\",",
+							"    \"definitions\": {",
+							"        \"Welcome\": {",
+							"            \"type\": \"object\",",
+							"            \"additionalProperties\": false,",
+							"            \"properties\": {",
+							"                \"Books\": {",
+							"                    \"type\": \"array\",",
+							"                    \"items\": {",
+							"                        \"$ref\": \"#/definitions/Book\"",
+							"                    }",
+							"                }",
+							"            },",
+							"            \"required\": [",
+							"                \"Books\"",
+							"            ],",
+							"            \"title\": \"Welcome\"",
+							"        },",
+							"        \"Book\": {",
+							"            \"type\": \"object\",",
+							"            \"additionalProperties\": false,",
+							"            \"properties\": {",
+							"                \"Title\": {",
+							"                    \"type\": \"string\"",
+							"                },",
+							"                \"Author\": {",
+							"                    \"type\": \"string\"",
+							"                },",
+							"                \"Price\": {",
+							"                    \"$ref\": \"#/definitions/PriceUnion\"",
+							"                }",
+							"            },",
+							"            \"required\": [",
+							"                \"Author\",",
+							"                \"Price\",",
+							"                \"Title\"",
+							"            ],",
+							"            \"title\": \"Book\"",
+							"        },",
+							"        \"PriceClass\": {",
+							"            \"type\": \"object\",",
+							"            \"additionalProperties\": false,",
+							"            \"properties\": {",
+							"                \"discountPrice\": {",
+							"                    \"type\": \"integer\"",
+							"                },",
+							"                \"fullPrice\": {",
+							"                    \"type\": \"integer\"",
+							"                }",
+							"            },",
+							"            \"required\": [",
+							"                \"discountPrice\",",
+							"                \"fullPrice\"",
+							"            ],",
+							"            \"title\": \"PriceClass\"",
+							"        },",
+							"        \"PriceUnion\": {",
+							"            \"anyOf\": [",
+							"                {",
+							"                    \"$ref\": \"#/definitions/PriceClass\"",
+							"                },",
+							"                {",
+							"                    \"type\": \"integer\"",
+							"                }",
+							"            ],",
+							"            \"title\": \"PriceUnion\"",
+							"        }",
+							"    }",
+							"}",
+							"",
+							"",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+							"",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6973ef3d-bab6-4c25-98fd-73dc240b8bc9.mock.pstmn.io/books",
+					"protocol": "https",
+					"host": [
+						"6973ef3d-bab6-4c25-98fd-73dc240b8bc9",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
